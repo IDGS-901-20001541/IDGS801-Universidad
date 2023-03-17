@@ -1,0 +1,53 @@
+{% extends "layout.html" %} 
+ 
+ {% block content%}
+   {%from "_macros.html" import render_field%}
+ 
+   <div class="container-xxl">
+    <div class="">
+       
+        <h3>Profesores </h3>
+         
+        <a href="/insertprof" class="btn btn-success"><i class="icon-undo icon-white"></i>Registrar</a>
+        <br><br>
+        <table>
+            <thead class=" table table-striped table-bordered">
+                <tr class="tr-head">
+                    <th>Nombre</th>
+                    <th>Apellido </th>
+                    <th>Correo</th>
+                    <th>Matricula</th>
+                    <th>Estatus</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody> 
+               
+                {% for pro in profesor %}
+                <tr>
+                    
+                    <td>{{pro[2]}}</td>
+                    <td>{{pro[3]}}</td>
+                    <td>{{pro[4]}}</td>
+                    <td>{{pro[1]}}</td>
+                    <td>{{pro[5]}}</td>
+                    <td><a href="/eliminarPro?id={{pro[0]}} " 
+                           class="btn btn-danger"><i class="icon-remove icon-white"></i>
+                           Eliminar
+                        </a>
+                    </td>
+                    <td><a href="/modProf?id={{pro[0]}}" 
+                        class="btn btn-warning"><i class="icon-pencil icon-white"></i>
+                        Modificar
+                     </a>
+                 </td>
+                 
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+   </div>
+ 
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %} 
+ 
+ {% block content%}
+   {%from "_macros.html" import render_field%}
+ 
+   <div class="container">
+    <div class="">
+       
+        <h3>Alumnos IDGS</h3>
+         
+        <a href="/" class="btn btn-success"><i class="icon-undo icon-white"></i>Registrar</a>
+        <br>
+        <table>
+            <thead class=" table table-striped table-bordered">
+                <tr class="tr-head">
+                    <th>Nombre</th>
+                    <th>Apellido </th>
+                    <th>Correo</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alum in alumnos %}
+                <tr>
+                    
+                    <td>{{alum.nombre}}</td>
+                    <td>{{alum.apellidos}}</td>
+                    <td>{{alum.correo}}</td>
+                    <td><a href="eliminar?id={{alum.id}} " 
+                           class="btn btn-danger"><i class="icon-remove icon-white"></i>
+                           Eliminar
+                        </a>
+                    </td>
+                    <td><a href="modificar?id={{alum.id}} " 
+                        class="btn btn-warning"><i class="icon-pencil icon-white"></i>
+                        Modificar
+                     </a>
+                 </td>
+                 
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+   </div>
+ 
+{% endblock %}
